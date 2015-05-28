@@ -62,6 +62,8 @@ if [ -z "${WAR_FILE}" ];then
 	WAR_FILE=${EB_APP_VERSION}
 fi
 
+ACCOUNT_ID=`${AWS} iam get-user --query 'User.Arn' | cut -d: -f5`
+
 EB_S3_BUCKET=elasticbeanstalk-${AWS_DEFAULT_REGION}-${ACCOUNT_ID}
 echo "Copying ${EB_APP_VERSION} to ${EB_S3_BUCKET}"
 if [ ! -z "${SOURCE_S3_REGION}" ];then
