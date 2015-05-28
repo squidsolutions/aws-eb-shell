@@ -37,7 +37,7 @@ AWS=`which aws`
 
 if [ $# -lt 1 ];then
         echo "Usage: $0 path/to/conf_file.conf [template_name]"
-	echo "The file "`dirname $0`"/conf_template_[template_name].json must contain the proper conf definition"
+	echo "The file path/to/conf_template_[template_name].json must contain the proper conf definition"
         exit 1
 fi
 
@@ -63,10 +63,10 @@ if [ -z "${TEMPLATE_NAME}" ];then
 	exit 2
 fi
 
-TEMPLATE_FILE=`dirname $0`"/../conf_template_${TEMPLATE_NAME}.json"
+TEMPLATE_FILE=`dirname ${CONF_PATH}`"/conf_template_${TEMPLATE_NAME}.json"
 
-if [ ! -f "${TEMPLATE_FILE}" ];then
-	echo "Please create a file ${TEMPLATE_FILE}"
+if [ ! -r "${TEMPLATE_FILE}" ];then
+	echo "Please create the file ${TEMPLATE_FILE}"
 	exit 3
 fi
 
