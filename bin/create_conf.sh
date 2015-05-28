@@ -63,7 +63,7 @@ if [ -z "${TEMPLATE_NAME}" ];then
 	exit 2
 fi
 
-TEMPLATE_FILE=`dirname $0`"/conf_template_${TEMPLATE_NAME}.json"
+TEMPLATE_FILE=`dirname $0`"/../conf_template_${TEMPLATE_NAME}.json"
 
 if [ ! -f "${TEMPLATE_FILE}" ];then
 	echo "Please create a file ${TEMPLATE_FILE}"
