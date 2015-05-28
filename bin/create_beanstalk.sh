@@ -32,7 +32,7 @@ fi
 
 set -e
 
-`dirname $0`/create_cst_app.sh ${CONF_PATH}
-`dirname $0`/create_cst_version.sh ${CONF_PATH}
-`dirname $0`/create_cst_conf.sh ${CONF_PATH}
-`dirname $0`/create_cst_env.sh ${CONF_PATH}
+`dirname $0`/create_app.sh ${CONF_PATH}
+`dirname $0`/create_version.sh ${CONF_PATH}
+`dirname $0`/create_conf.sh ${CONF_PATH}
+`dirname $0`/create_env.sh ${CONF_PATH}
