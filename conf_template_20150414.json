@@ -1,0 +1,419 @@
+{
+    "ApplicationName": "_APP_NAME_", 
+    "TemplateName": "_TEMPLATE_", 
+    "SolutionStackName": "_STACK_NAME_", 
+    "Description": "See G. Doumergue <support@squidsolutions.com>", 
+
+            "OptionSettings": [
+                {
+                    "OptionName": "Availability Zones", 
+                    "Namespace": "aws:autoscaling:asg", 
+                    "Value": "Any"
+                }, 
+                {
+                    "OptionName": "Cooldown", 
+                    "Namespace": "aws:autoscaling:asg", 
+                    "Value": "360"
+                }, 
+                {
+                    "OptionName": "MaxSize", 
+                    "Namespace": "aws:autoscaling:asg", 
+                    "Value": "5"
+                }, 
+                {
+                    "OptionName": "MinSize", 
+                    "Namespace": "aws:autoscaling:asg", 
+                    "Value": "_MIN_INST_"
+                }, 
+                {
+                    "OptionName": "BlockDeviceMappings", 
+                    "Namespace": "aws:autoscaling:launchconfiguration"
+                }, 
+                {
+                    "OptionName": "EC2KeyName", 
+                    "Namespace": "aws:autoscaling:launchconfiguration", 
+                    "Value": "_SSH_KEY_"
+                }, 
+                {
+                    "OptionName": "IamInstanceProfile", 
+                    "Namespace": "aws:autoscaling:launchconfiguration", 
+                    "Value": "_INST_ROLE_"
+                }, 
+                {
+                    "OptionName": "InstanceType", 
+                    "Namespace": "aws:autoscaling:launchconfiguration", 
+                    "Value": "_INST_TYPE_"
+                }, 
+                {
+                    "OptionName": "MonitoringInterval", 
+                    "Namespace": "aws:autoscaling:launchconfiguration", 
+                    "Value": "5 minute"
+                }, 
+                {
+                    "OptionName": "RootVolumeSize", 
+                    "Namespace": "aws:autoscaling:launchconfiguration",
+		    "Value": "_INST_SIZE_"
+                }, 
+                {
+                    "OptionName": "RootVolumeType", 
+                    "Namespace": "aws:autoscaling:launchconfiguration",
+                    "Value": "standard"
+                }, 
+                {
+                    "OptionName": "SSHSourceRestriction", 
+                    "Namespace": "aws:autoscaling:launchconfiguration", 
+                    "Value": "tcp,22,22,,80.15.144.34/32"
+                }, 
+                {
+                    "OptionName": "SecurityGroups", 
+                    "Namespace": "aws:autoscaling:launchconfiguration", 
+                    "Value": "_SEC_GROUP_"
+                }, 
+                {
+                    "OptionName": "BreachDuration", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "3"
+                }, 
+                {
+                    "OptionName": "EvaluationPeriods", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "3"
+                }, 
+                {
+                    "OptionName": "LowerBreachScaleIncrement", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "-1"
+                }, 
+                {
+                    "OptionName": "LowerThreshold", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "0.030"
+                }, 
+                {
+                    "OptionName": "MeasureName", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "Latency"
+                }, 
+                {
+                    "OptionName": "Period", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "1"
+                }, 
+                {
+                    "OptionName": "Statistic", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "Average"
+                }, 
+                {
+                    "OptionName": "Unit", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "Seconds"
+                }, 
+                {
+                    "OptionName": "UpperBreachScaleIncrement", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "1"
+                }, 
+                {
+                    "OptionName": "UpperThreshold", 
+                    "Namespace": "aws:autoscaling:trigger", 
+                    "Value": "0.080"
+                }, 
+                {
+                    "OptionName": "MaxBatchSize", 
+                    "Namespace": "aws:autoscaling:updatepolicy:rollingupdate", 
+                    "Value": "1"
+                }, 
+                {
+                    "OptionName": "MinInstancesInService", 
+                    "Namespace": "aws:autoscaling:updatepolicy:rollingupdate", 
+                    "Value": "2"
+                }, 
+                {
+                    "OptionName": "PauseTime", 
+                    "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                    "Value": "PT1M30S"
+                }, 
+                {
+                    "OptionName": "RollingUpdateEnabled", 
+                    "Namespace": "aws:autoscaling:updatepolicy:rollingupdate", 
+                    "Value": "true"
+                }, 
+                {
+                    "OptionName": "RollingUpdateType", 
+                    "Namespace": "aws:autoscaling:updatepolicy:rollingupdate", 
+                    "Value": "Time"
+                }, 
+                {
+                    "OptionName": "Timeout", 
+                    "Namespace": "aws:autoscaling:updatepolicy:rollingupdate", 
+                    "Value": "PT15M"
+                }, 
+                {
+                    "OptionName": "EnvironmentVariables", 
+                    "Namespace": "aws:cloudformation:template:parameter", 
+                    "Value": "PARAM3=,PARAM4=,PARAM1=,PARAM2=,JDBC_CONNECTION_STRING=,PARAM5=,AWS_SECRET_KEY=,AWS_ACCESS_KEY_ID="
+                }, 
+                {
+                    "OptionName": "HooksPkgUrl", 
+                    "Namespace": "aws:cloudformation:template:parameter", 
+                    "Value": "https://s3.amazonaws.com/elasticbeanstalk-env-resources-us-east-1/stalks/eb_tomcat_3.11.1/lib/hooks.tar.gz"
+                }, 
+                {
+                    "OptionName": "InstancePort", 
+                    "Namespace": "aws:cloudformation:template:parameter", 
+                    "Value": "80"
+                }, 
+                {
+                    "OptionName": "JVMOptions", 
+                    "Namespace": "aws:cloudformation:template:parameter", 
+                    "Value": "JVM Options=,XX:MaxPermSize=64m,Xmx=256m,Xms=256m"
+                }, 
+                {
+                    "OptionName": "AssociatePublicIpAddress", 
+                    "Namespace": "aws:ec2:vpc", 
+                    "Value": "true"
+                }, 
+                {
+                    "OptionName": "ELBScheme", 
+                    "Namespace": "aws:ec2:vpc", 
+                    "Value": "public"
+                }, 
+                {
+                    "OptionName": "ELBSubnets", 
+                    "Namespace": "aws:ec2:vpc", 
+                    "Value": "_ELB_SUBNETS_"
+                }, 
+                {
+                    "OptionName": "Subnets", 
+                    "Namespace": "aws:ec2:vpc", 
+                    "Value": "_INST_SUBNETS_"
+                }, 
+                {
+                    "OptionName": "VPCId", 
+                    "Namespace": "aws:ec2:vpc", 
+                    "Value": "_VPC_ID_"
+                }, 
+                {
+                    "OptionName": "Application Healthcheck URL", 
+                    "Namespace": "aws:elasticbeanstalk:application", 
+                    "Value": "/index.html"
+                }, 
+                {
+                    "OptionName": "BatchSize", 
+                    "Namespace": "aws:elasticbeanstalk:command", 
+                    "Value": "1"
+                }, 
+                {
+                    "OptionName": "BatchSizeType", 
+                    "Namespace": "aws:elasticbeanstalk:command", 
+                    "Value": "Fixed"
+                }, 
+                {
+                    "OptionName": "Timeout", 
+                    "Namespace": "aws:elasticbeanstalk:command", 
+                    "Value": "600"
+                }, 
+                {
+                    "OptionName": "XX:MaxPermSize", 
+                    "Namespace": "aws:elasticbeanstalk:container:tomcat:jvmoptions", 
+                    "Value": "64m"
+                }, 
+                {
+                    "OptionName": "Xms", 
+                    "Namespace": "aws:elasticbeanstalk:container:tomcat:jvmoptions", 
+                    "Value": "256m"
+                }, 
+                {
+                    "OptionName": "Xmx", 
+                    "Namespace": "aws:elasticbeanstalk:container:tomcat:jvmoptions", 
+                    "Value": "1024m"
+                }, 
+                {
+                    "OptionName": "DefaultSSHPort", 
+                    "Namespace": "aws:elasticbeanstalk:control", 
+                    "Value": "22"
+                }, 
+                {
+                    "OptionName": "LaunchTimeout", 
+                    "Namespace": "aws:elasticbeanstalk:control", 
+                    "Value": "0"
+                }, 
+                {
+                    "OptionName": "LaunchType", 
+                    "Namespace": "aws:elasticbeanstalk:control", 
+                    "Value": "Migration"
+                }, 
+                {
+                    "OptionName": "RollbackLaunchOnFailure", 
+                    "Namespace": "aws:elasticbeanstalk:control", 
+                    "Value": "false"
+                }, 
+                {
+                    "OptionName": "EnvironmentType", 
+                    "Namespace": "aws:elasticbeanstalk:environment", 
+                    "Value": "LoadBalanced"
+                }, 
+                {
+                    "OptionName": "LogPublicationControl", 
+                    "Namespace": "aws:elasticbeanstalk:hostmanager", 
+                    "Value": "false"
+                }, 
+                {
+                    "OptionName": "Automatically Terminate Unhealthy Instances", 
+                    "Namespace": "aws:elasticbeanstalk:monitoring", 
+                    "Value": "true"
+                }, 
+                {
+                    "OptionName": "Notification Endpoint", 
+                    "Namespace": "aws:elasticbeanstalk:sns:topics", 
+                    "Value": "_NOTIF_EMAIL_"
+                }, 
+                {
+                    "OptionName": "Notification Protocol", 
+                    "Namespace": "aws:elasticbeanstalk:sns:topics", 
+                    "Value": "email"
+                }, 
+                {
+                    "OptionName": "Notification Topic ARN", 
+                    "Namespace": "aws:elasticbeanstalk:sns:topics"
+                }, 
+                {
+                    "OptionName": "Notification Topic Name", 
+                    "Namespace": "aws:elasticbeanstalk:sns:topics"
+                }, 
+                {
+                    "OptionName": "HealthyThreshold", 
+                    "Namespace": "aws:elb:healthcheck", 
+                    "Value": "2"
+                }, 
+                {
+                    "OptionName": "Interval", 
+                    "Namespace": "aws:elb:healthcheck", 
+                    "Value": "10"
+                }, 
+                {
+                    "OptionName": "Target", 
+                    "Namespace": "aws:elb:healthcheck", 
+                    "Value": "HTTP:80/js/tracker.js"
+                }, 
+                {
+                    "OptionName": "Timeout", 
+                    "Namespace": "aws:elb:healthcheck", 
+                    "Value": "3"
+                }, 
+                {
+                    "OptionName": "UnhealthyThreshold", 
+                    "Namespace": "aws:elb:healthcheck", 
+                    "Value": "2"
+                }, 
+                {
+                    "OptionName": "InstanceProtocol", 
+                    "Namespace": "aws:elb:listener:443", 
+                    "Value": "HTTP"
+                }, 
+                {
+                    "OptionName": "InstancePort", 
+                    "Namespace": "aws:elb:listener:443", 
+                    "Value": "80"
+                }, 
+                {
+                    "OptionName": "ListenerEnabled", 
+                    "Namespace": "aws:elb:listener:443", 
+                    "Value": "true"
+                }, 
+                {
+                    "OptionName": "ListenerProtocol", 
+                    "Namespace": "aws:elb:listener:443", 
+                    "Value": "HTTPS"
+                }, 
+                {
+                    "OptionName": "PolicyNames", 
+                    "Namespace": "aws:elb:listener:443"
+                }, 
+                {
+                    "OptionName": "SSLCertificateId", 
+                    "Namespace": "aws:elb:listener:443", 
+                    "Value": "_SSL_CERTIFICATE_"
+                }, 
+                {
+                    "OptionName": "InstancePort", 
+                    "Namespace": "aws:elb:listener:80", 
+                    "Value": "80"
+                }, 
+                {
+                    "OptionName": "InstanceProtocol", 
+                    "Namespace": "aws:elb:listener:80", 
+                    "Value": "HTTP"
+                }, 
+                {
+                    "OptionName": "ListenerEnabled", 
+                    "Namespace": "aws:elb:listener:80", 
+                    "Value": "true"
+                }, 
+                {
+                    "OptionName": "ListenerProtocol", 
+                    "Namespace": "aws:elb:listener:80", 
+                    "Value": "HTTP"
+                }, 
+                {
+                    "OptionName": "PolicyNames", 
+                    "Namespace": "aws:elb:listener:80"
+                }, 
+                {
+                    "OptionName": "CrossZone", 
+                    "Namespace": "aws:elb:loadbalancer", 
+                    "Value": "true"
+                }, 
+                {
+                    "OptionName": "LoadBalancerHTTPPort", 
+                    "Namespace": "aws:elb:loadbalancer", 
+                    "Value": "80"
+                }, 
+                {
+                    "OptionName": "LoadBalancerHTTPSPort", 
+                    "Namespace": "aws:elb:loadbalancer", 
+                    "Value": "443"
+                }, 
+                {
+                    "OptionName": "LoadBalancerPortProtocol", 
+                    "Namespace": "aws:elb:loadbalancer", 
+                    "Value": "HTTP"
+                }, 
+                {
+                    "OptionName": "LoadBalancerSSLPortProtocol", 
+                    "Namespace": "aws:elb:loadbalancer", 
+                    "Value": "HTTPS"
+                }, 
+                {
+                    "OptionName": "SSLCertificateId", 
+                    "Namespace": "aws:elb:loadbalancer", 
+                    "Value": "_SSL_CERTIFICATE_"
+                }, 
+                {
+                    "OptionName": "ConnectionDrainingEnabled", 
+                    "Namespace": "aws:elb:policies", 
+                    "Value": "true"
+                }, 
+                {
+                    "OptionName": "ConnectionDrainingTimeout", 
+                    "Namespace": "aws:elb:policies", 
+                    "Value": "20"
+                }, 
+                {
+                    "OptionName": "ConnectionSettingIdleTimeout", 
+                    "Namespace": "aws:elb:policies", 
+                    "Value": "3"
+                }, 
+                {
+                    "OptionName": "Stickiness Cookie Expiration", 
+                    "Namespace": "aws:elb:policies", 
+                    "Value": "0"
+                }, 
+                {
+                    "OptionName": "Stickiness Policy", 
+                    "Namespace": "aws:elb:policies", 
+                    "Value": "false"
+                }
+            ] 
+}
