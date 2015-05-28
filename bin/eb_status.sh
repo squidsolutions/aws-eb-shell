@@ -21,12 +21,11 @@ if [ $# -lt 1 ];then
         exit 1
 fi
 
-CONF=${1}
+CONF_PATH=${1}
 ENV_NAME=${2}
 
 
-CONF_PATH=`dirname $0`"/../${CONF}"
-if [ -f ${CONF_PATH} ];then
+if [ -r ${CONF_PATH} ];then
 
         . ${CONF_PATH}
 else
