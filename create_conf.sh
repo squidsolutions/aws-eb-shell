@@ -15,7 +15,7 @@
 # _INST_TYPE_		Instance type			${EB_INST_TYPE}
 # _INST_SIZE_		Instance root vol size		${EB_INST_SIZE}
 # _MIN_INST_		Minimun instance nb		${EB_MIN_INST}
-# _STACK_NAME_		Solution stack name		${EB_EB_STACK} 
+# _STACK_NAME_		Solution stack name		${EB_STACK} 
 # _SEC_GROUP_		Security group			${PRIVATE_SEC_GROUP}
 # _ELB_SUBNETS_		ELB subnets (pub)		${EB_ELB_SUBNETS}
 # _INST_SUBNETS_	Instances subnets (priv	)	${EB_INST_SUBNETS}
@@ -43,7 +43,7 @@ fi
 
 EB_INST_TYPE="m1.small"
 EB_MIN_INST=2
-EB_INST_SIZE=60
+EB_INST_SIZE=10
 
 CONF_PATH=${1}
 TEMPLATE_NAME=${2}
@@ -82,7 +82,7 @@ fi
 # Create the conf file
 
 TMP_FILE=`mktemp`
-sed	-e "s/_APP_NAME_/${EB_APP}/" -e "s/_TEMPLATE_/${TEMPLATE_NAME}/" -e "s/_STACK_NAME_/${EB_EB_STACK}/" -e "s/_INST_ROLE_/${EB_INST_ROLE}/"\
+sed	-e "s/_APP_NAME_/${EB_APP}/" -e "s/_TEMPLATE_/${TEMPLATE_NAME}/" -e "s/_STACK_NAME_/${EB_STACK}/" -e "s/_INST_ROLE_/${EB_INST_ROLE}/"\
 	-e "s/_SEC_GROUP_/${PRIVATE_SEC_GROUP}/" -e "s/_ELB_SUBNETS_/${EB_ELB_SUBNETS}/" -e "s/_INST_SUBNETS_/${EB_INST_SUBNETS}/" \
 	-e "s/_INST_TYPE_/${EB_INST_TYPE}/" -e "s/_MIN_INST_/${EB_MIN_INST}/" -e "s/_INST_SIZE_/${EB_INST_SIZE}/" \
 	-e "s/_NOTIF_EMAIL_/${NOTIF_EMAIL}/" -e "s/_SSH_KEY_/${SSH_KEY}/" \
