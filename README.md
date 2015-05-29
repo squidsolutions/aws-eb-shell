@@ -11,9 +11,9 @@ Despite having a running Elasticbeanstalk app running after some clicks on the A
 
 ## ElasticBeanstalk components
 
-* An **EB "Save Configuration"** explains how to deploy the ELB and EC2 instances
+* An **EB "Saved Configuration"** explains how to deploy the ELB and EC2 instances
 * An **EB "Application Version"** represents your code to be deployed
-* An **EB "Environment"** is created using one "Save Configuration" and one "Application Version", and it will spawn new:
+* An **EB "Environment"** is created using one "Saved Configuration" and one "Application Version", and it will spawn new:
   * EC2 Elastic Load Balancer
   * EC2 Autoscaling Group
   * EC2 Security Groups
@@ -46,10 +46,10 @@ Before you use these scripts, have in mind that they've been written to host an 
 
 ## Having awscli and jq installed
 
-No kidding ?
+No kidding.
 
 ```
-pip install aws-cli
+pip install awscli
 apt-get install jq
 ```
 
@@ -57,7 +57,7 @@ apt-get install jq
 
 Upload your application (.war, .zip) in an S3 bucket. You don't need to make it publicly accessible.
 
-## AWS network components
+## AWS network components (optional)
 
 According to the [Scenario 2 VPC setup](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html), you should create:
 
@@ -69,11 +69,11 @@ The private subnet will host the EC2 instances. Those instances _will_ need to a
 
 # The configuration files
 
-# The ?conf file
+## The .conf file
 
 Create one configuration file, using the example.conf file provided, for each ElasticBeanstalk deployment.
 
-# The .json file
+## The .json file
 
 The .json file describes the "Saved Configuration" of your EB application. It is a template that will be filled by the `create_conf.sh` script. As you can have multiple "Saved Configuration" within a single application, you can create as many .json file as you want following the pattern `conf_template_WHATEVERYOUWANT.json`
 
