@@ -151,6 +151,11 @@ Prints usefull informations about your application's health:
 
 `./bin/eb_status.sh path/to/your_config.conf`
 
+
+## list_*.sh
+
+List various components inside your application
+
 # License
 
 The shell scripts inside the `bin/` directory are licensed under the GNU General Public License (GPL) v.3.

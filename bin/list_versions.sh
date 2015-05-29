@@ -6,8 +6,8 @@
 #
 
 
-JQ=/usr/bin/jq
-AWS=/usr/local/bin/aws
+JQ=`which jq`
+AWS=`which aws`
 
 [ -x ${JQ} ] || (echo "Please install jq";exit 1;)
 [ -x ${AWS} ] || (echo "Please install awscli";exit 1;)
