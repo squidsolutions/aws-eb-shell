@@ -23,6 +23,7 @@
 # _SSL_CERTIFICATE_	SSL Certificate ID		${SSL_CERTIFICATE}
 # _NOTIF_EMAIL_		SNS Notif. email		${NOTIF_EMAIL}
 # _SSH_KEY_		SSH pub key name		${SSH_KEY}
+# _JVM_OPTS_		JVM Options			${JVM_OPTS}
 # 
 # (a template of a conf-template file. Do you still follow ?)
 #
@@ -85,7 +86,7 @@ TMP_FILE=`mktemp`
 sed	-e "s/_APP_NAME_/${EB_APP}/" -e "s/_TEMPLATE_/${TEMPLATE_NAME}/" -e "s/_STACK_NAME_/${EB_STACK}/" -e "s/_INST_ROLE_/${EB_INST_ROLE}/"\
 	-e "s/_SEC_GROUP_/${PRIVATE_SEC_GROUP}/" -e "s/_ELB_SUBNETS_/${EB_ELB_SUBNETS}/" -e "s/_INST_SUBNETS_/${EB_INST_SUBNETS}/" \
 	-e "s/_INST_TYPE_/${EB_INST_TYPE}/" -e "s/_MIN_INST_/${EB_MIN_INST}/" -e "s/_INST_SIZE_/${EB_INST_SIZE}/" \
-	-e "s/_NOTIF_EMAIL_/${NOTIF_EMAIL}/" -e "s/_SSH_KEY_/${SSH_KEY}/" \
+	-e "s/_NOTIF_EMAIL_/${NOTIF_EMAIL}/" -e "s/_SSH_KEY_/${SSH_KEY}/"  -e "s/_JVM_OPTS_/${JVM_OPTS}/" \
 	-e "s/_VPC_ID_/${VPC_ID}/" -e "s|_SSL_CERTIFICATE_|${SSL_CERTIFICATE}|" ${TEMPLATE_FILE} > ${TMP_FILE}
 
 # Create EB conf

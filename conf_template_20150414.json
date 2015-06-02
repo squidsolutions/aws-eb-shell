@@ -62,7 +62,7 @@
                 {
                     "OptionName": "SSHSourceRestriction", 
                     "Namespace": "aws:autoscaling:launchconfiguration", 
-                    "Value": "tcp,22,22,,80.15.144.34/32"
+                    "Value": "tcp,22,22,0.0.0.0/0"
                 }, 
                 {
                     "OptionName": "SecurityGroups", 
@@ -167,7 +167,7 @@
                 {
                     "OptionName": "JVMOptions", 
                     "Namespace": "aws:cloudformation:template:parameter", 
-                    "Value": "JVM Options=,XX:MaxPermSize=64m,Xmx=256m,Xms=256m"
+                    "Value": "JVM Options=_JVM_OPTS_,XX:MaxPermSize=64m,Xmx=256m,Xms=256m"
                 }, 
                 {
                     "OptionName": "AssociatePublicIpAddress", 
