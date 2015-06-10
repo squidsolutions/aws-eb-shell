@@ -38,6 +38,7 @@ list_apps () {
 	echo "Please provide the app to use, chosen from this list:"
 	${AWS} elasticbeanstalk describe-applications --application-name "${EB_APP}" | ${JQ} '.Applications[] | .Versions[]'
 	usage
+	exit 2
 
 }
 
@@ -60,17 +61,20 @@ if [ -z "${APP_VERSION}" ];then
 	APP_VERSION=${EB_APP_VERSION}
 fi
 
+# Version label can't have a "/". We choose to keep the beginning of the war_file
+VERSION_LABEL=`echo ${APP_VERSION} | cut -d"/" -f 1`
+
 # See if EB_APP_VERSION is in the EB app
-NB_VERS=`${AWS} elasticbeanstalk describe-applications --application-name "${EB_APP}" | ${JQ} '.Applications[] | .Versions[]' | grep -c "\"${APP_VERSION}\""`
+NB_VERS=`${AWS} elasticbeanstalk describe-applications --application-name "${EB_APP}" | ${JQ} '.Applications[] | .Versions[]' | grep -c "\"${VERSION_LABEL}\""`
 if [ ${NB_VERS} = 0 ];then
-	echo "No app version called \"${APP_VERSION}\" in EB application \"${EB_APP}\"."
+	echo "No app version called \"${VERSION_LABEL}\" in EB application \"${EB_APP}\"."
 	list_apps
 	echo "(please add it in EB_APP_VERSION in ${CONF_PATH})"
 	usage
 	exit 4
 fi
 
-echo "Deploying EB app version ${APP_VERSION} in EB app \"${EB_APP}\" on region ${AWS_DEFAULT_REGION}"
+echo "Deploying EB app version ${VERSION_LABEL} in EB app \"${EB_APP}\" on region ${AWS_DEFAULT_REGION}"
 
 ${AWS} elasticbeanstalk update-environment --environment-name "${ENV_NAME}"  \
- --version-label "${APP_VERSION}"
+ --version-label "${VERSION_LABEL}"
