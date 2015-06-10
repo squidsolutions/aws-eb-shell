@@ -64,14 +64,17 @@ fi
 
 ACCOUNT_ID=`${AWS} iam get-user --query 'User.Arn' | cut -d: -f5`
 
+# Version label can't have a "/". We choose to keep the beginning of the war_file
+VERSION_LABEL=`echo ${WAR_FILE} | cut -d"/" -f 1`
+
 EB_S3_BUCKET=elasticbeanstalk-${AWS_DEFAULT_REGION}-${ACCOUNT_ID}
-echo "Copying ${EB_APP_VERSION} to ${EB_S3_BUCKET}"
+echo "Copying ${WAR_FILE} to ${EB_S3_BUCKET}"
 if [ ! -z "${SOURCE_S3_REGION}" ];then
 	SOURCE_REGION="--source-region ${SOURCE_S3_REGION}"
 fi
 ${AWS} s3 cp s3://${SOURCE_S3_BUCKET}/${SOURCE_S3_PREFIX}/${WAR_FILE} s3://${EB_S3_BUCKET}/${WAR_FILE} ${SOURCE_REGION}
 
-echo "Creating EB app version ${WAR_FILE} in EB app \"${EB_APP}\" on region ${AWS_DEFAULT_REGION}"
+echo "Creating EB app version ${VERSION_LABEL} in EB app \"${EB_APP}\" on region ${AWS_DEFAULT_REGION}"
 
 ${AWS} elasticbeanstalk create-application-version --application-name "${EB_APP}" \
- --version-label "${WAR_FILE}" --source-bundle S3Bucket=${EB_S3_BUCKET},S3Key=${WAR_FILE}
+ --version-label "${VERSION_LABEL}" --source-bundle S3Bucket=${EB_S3_BUCKET},S3Key=${WAR_FILE}
