@@ -34,7 +34,7 @@ else
 fi
 
 [ -z "${ENV_NAME}" ] && ENV_NAME=${EB_ENV}
-if [ -z "${EB_ENV}" ];then
+if [ -z "${ENV_NAME}" ];then
         echo "No EB_ENV var in ${CONF_PATH}, or no environment given"
 	usage
         exit 2
@@ -42,6 +42,7 @@ fi
 
 echo "=== ENVIRONMENT \"${ENV_NAME}\" === "
 ELB=`${AWS} elasticbeanstalk describe-environment-resources --environment-name "${ENV_NAME}" | ${JQ} -r '.EnvironmentResources.LoadBalancers[0].Name'`
+ASC=`${AWS} elasticbeanstalk describe-environment-resources --environment-name "${ENV_NAME}" | ${JQ} -r '.EnvironmentResources.AutoScalingGroups[0].Name'`
 
 echo ""
 echo "== Environment health =="
@@ -52,6 +53,11 @@ echo ""
 echo "== ELB ${ELB} health =="
 
 ${AWS}  elb describe-instance-health --load-balancer-name ${ELB} --output text --query 'InstanceStates[*].[InstanceId,State,Description]'
+echo ""
+
+echo "== Autoscaling group ${ASC} health =="
+
+${AWS}  autoscaling describe-auto-scaling-groups --auto-scaling-group-names ${ASC} --output text --query 'AutoScalingGroups[*].Instances[*].[InstanceId,HealthStatus,LifecycleState]'
 echo ""
 
 echo "== Last events in environment =="
