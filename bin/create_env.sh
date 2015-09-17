@@ -44,6 +44,9 @@ if [ -z "${CONF_NAME}"  -o "${CONF_NAME}" = "--" ];then
 fi
 [ -z "${APP_VERSION}" ] && APP_VERSION=${EB_APP_VERSION}
 
+# Version label can't have a "/". We choose to keep the beginning of the war_file
+VERSION_LABEL=`echo ${APP_VERSION} | cut -d"/" -f 1`
+
 
 # Verify if the EB env exists
 ENV_NB=`${AWS} elasticbeanstalk describe-environments --application-name "${EB_APP}" --environment-names "${ENV_NAME}" --no-include-deleted | ${JQ} '.Environments|length'`
@@ -57,4 +60,4 @@ fi
 
 # Create EB env
 echo "Creating Elasticbeanstalk environment \"${ENV_NAME}\" in application \"${EB_APP}\""
-${AWS} elasticbeanstalk create-environment --application-name "${EB_APP}" --environment-name "${ENV_NAME}" --template-name "${CONF_NAME}" --version-label "${APP_VERSION}" ${PREFIX}
+${AWS} elasticbeanstalk create-environment --application-name "${EB_APP}" --environment-name "${ENV_NAME}" --template-name "${CONF_NAME}" --version-label "${VERSION_LABEL}" ${PREFIX}
